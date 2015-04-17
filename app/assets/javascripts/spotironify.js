@@ -1,5 +1,4 @@
-// Place all the behaviors and hooks related to the matching controller here.
-// All this logic will automatically be available in application.js.
+//searches by term from home search bar and returns first track
 function trackSearch(event) {
 	event.preventDefault();
 	var searchTerm= $('.js-searchbar').val();
@@ -17,7 +16,7 @@ function trackSearch(event) {
 
 
 trackGet.done(handleTrack)
-
+//plays track when play button click and pauses when pause is clicked
  }
 
 function playAudio(){
@@ -28,6 +27,8 @@ function playAudio(){
 		$('.js-player').trigger('pause');
 }
 
+//updates the progress bar and song plays
+
 function printTime () {
   var current = $('.js-player').prop('currentTime');
   $('.progBar').prop('value', current)
@@ -37,23 +38,42 @@ function printTime () {
  	var artistId= $(event.target).data('id')
  	var artistInfoUrl=	"https://api.spotify.com/v1/artists/" + artistId
  	var artistRequest= $.get(artistInfoUrl)
+ 	var topTrackUrl= artistInfoUrl + "/top-tracks?country=US"
+ 	var topTrackRequest= $.get(topTrackUrl)
  	
+//when artist's name is clicked info about the artist pops up in modal
 
  function handleArtist (response){
- 	console.log(response)
+ 
  	$('.js-modal-head').text(response.name)
  	$('.js-modal-genre').text(response.genres[0]) 
  	$('.js-modal-followers').text(response.followers.total + ' followers')
- 	$('.js-modal-image').append('<img src="' + response.images[2].url + '">') 
-
+ 	$('.js-modal-image').append('<img src="' + response.images[2].url + '">')
+ 	 
  	$('.js-modal').modal();
  	// $('.js-modal').append(artistInfoResponse.genre)
  	// name (genre, photo, followers)
  }
 
- 	artistRequest.done(handleArtist)
- }
+function handleTopTracks(response) {
+	response.tracks.forEach(function show (trk) {
+		$('.js-modal-trackList').append('<li>' + '<button data-preview="' + trk.preview_url +'" class="js-top-track">' + trk.name + '</button>' + '</li>');
+	});
 
+	function clickTopTrack(event) {
+	var trackPreviewUrl= $(event.target).data('preview');
+	$('.js-player').prop('src', trackPreviewUrl);
+	$('.js-modal').modal('hide');
+
+	}
+$('.js-top-track').on('click', clickTopTrack)
+
+}
+
+ 	artistRequest.done(handleArtist)
+ 	topTrackRequest.done(handleTopTracks)
+ }
+//click events 
 $('.js-player').on('timeupdate', printTime);
 $('.js-search-button').on('click', trackSearch);
 $('.btn-play').on('click', playAudio)
