@@ -2,8 +2,8 @@
 	<div class="container">
 		<div class="row row-centered">
 			<div class="col-lg-12 col-cenetered">
-				<h1> SpotIronify </h1> 
-				<p>Search for your song.</p>
+				<h1> SpotPreview </h1> 
+				<p class="underHeader">Search for your song.</p>
 			</div><!--.col-->
 		</div><!--/.row-->
 	</div><!--/.container-->
@@ -13,9 +13,9 @@
 			</div>
 			<div class="col-lg-6">
 			    <div class="input-group">
-			      <input type="text" class="form-control" placeholder="">
+			      <input type="text" class="form-control js-searchbar" placeholder="">
 			      <span class="input-group-btn">
-			        <button class="btn btn-default" type="button">Go!</button>
+			        <button class="btn btn-default js-search-button" type="button">Go!</button>
 			      </span>
 			    </div><!-- /input-group -->
 			</div><!--/.col-->
@@ -32,18 +32,18 @@
     <div class="btn-play"></div>
 
     <div class="metadata">
-      <p class="title">Hunger of The Pine</p>
-      <p class="author">alt-J</p>
+      <p class="title js-title"></p>
+      <p class="author js-author"></p>
 
       <div class="seekbar">
-        <progress value="5" max="30"></progress>
+        <progress class="progBar" value="" max="30"></progress>
       </div>
     </div>
   </div>
   <div class="cover">
-    <img src="https://i.scdn.co/image/04da6dfc1f5f45fdeba938a0cc71cf372524fd43">
+    <img class="albumArt" src="assets/palms1.jpeg">
   </div>
 
-  <audio id="audio" src="https://p.scdn.co/mp3-preview/8e9c5ffdc38e91659bfe8b6bd44650dfc25a3d31"></audio>
+  <audio class= "js-player" id="audio" src="https://p.scdn.co/mp3-preview/8e9c5ffdc38e91659bfe8b6bd44650dfc25a3d31"></audio>
 </div>
 
