@@ -1,28 +1,11 @@
-== README
+This was an exercise in using the Spotify API to search for songs and jQuery to display results dynamically.
+The exercise is hosted for free at spotifyserch.herokuapp.com
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Twitter-bootstrap-rails gem was used for the design
+Spotify API was used for search, song play, and artist information
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Type a search term in the search field and a 30 second song clip will appear below. 
+Click on the artist's name to view artist genre, follower count, photo, and a list of top songs by the artist
+Click on any song in the list to play the new song
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
