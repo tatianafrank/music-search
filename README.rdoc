@@ -1,4 +1,5 @@
 This was an exercise in using the Spotify API to search for songs and jQuery to display results dynamically.
+
 The exercise is hosted for free at spotifyserch.herokuapp.com
 
 Twitter-bootstrap-rails gem was used for the design
